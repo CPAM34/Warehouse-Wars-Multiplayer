@@ -1,0 +1,19 @@
+{
+  "name": "a3",
+  "version": "1.0.0",
+  "description": "Web Server",
+  "main": "echoServerBroadcast.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "JSON": "^1.0.0",
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.25",
+    "ws": "^2.2.2"
+  }
+}

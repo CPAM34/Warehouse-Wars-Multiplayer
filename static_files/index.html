@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta HTTP-EQUIV="EXPIRES" CONTENT="-1">
+		<title>Computing Science 309 Warehouse Wars</title>
+		<script language="javascript" src="jquery-3.1.1.min.js" > </script>
+		<script language="javascript" src="index.js" > </script>
+		<style>
+			/* style parts of the legend, the controls and the elements in the stage appropriately */
+			table.stage{
+				border-collapse:collapse;
+				border:1px solid #000;
+			}
+			table.stage td{
+				border:1px solid #000;
+			}
+			table.form {
+				padding-top: 8px;
+				padding-bottom: 8px;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			table.form td{
+				padding-top: 12px;
+				padding-bottom 12px;
+			}
+			.error {
+				color: red;
+			}
+			.divider{
+				margin: 50px 50px;
+			}
+			body {
+				border: 1px solid gray;
+				padding-top:20px;
+				padding-bottom:20px;
+			}
+			header, footer {
+				clear: left;
+				text-align: center;
+				margin:5px;
+				border-bottom: 1px solid black;
+			}
+			form-divide {
+				margin:22px 5px;
+			}
+			form {
+				align:center;
+			}
+			fieldset {
+				display:inline-block;
+			}
+			button-align {
+				margin:15px 15px 15px 15px;
+			}
+			label {
+				text-align: right;
+				font-size:18px;
+				clear: both;
+				float:left;
+				margin-right:12px;
+			}
+			.smalltext {
+				display:block;
+				text-align:left;
+				font-size:10px;
+			}
+			.scoretable {
+				border-collapse:collapse;
+				border:1px solid #000;
+			}
+			.scoretable td {
+				border:1px solid #000;
+				padding: 5px 5px 5px 5px;
+				text-align:center;
+				vertical-align:middle;
+			}
+		</style>
+	</head>
+	<body bgcolor="ffffff">
+		<header><h1>Warehouse Wars</h1></header>
+		<div id="nav" style="display:none;">
+		</div>
+		<center>
+			<div id="login">
+				<h2>Welcome!</h2>
+				<form>
+					<fieldset>
+						<legend>Please log in below</legend>
+						<div id="loginerror" class="error"> </div>
+						<table class="form">
+							<tr> <td> <div id="userlogin"> <label for="lusername"> Username: </label> </div> </td> <td> <input type="text" id="lusername"> </td> </tr>
+							<tr> <td> <div id="passlogin"> <label for="lpassword"> Password: </label> </div> </td> <td> <input type="password" id="lpassword"> </td> </tr>
+						</table>
+						<div class="form-divide"> </div>
+						<div class="button-align"> <p> <input id="loginButton" type="button" value="Login" /> </p> </div>
+					</fieldset>
+				</form>
+				<div class="divider"> </div>
+				<form>
+					<fieldset>
+						<legend>New user? Register here!</legend>
+						<div class="button-align"> <p> <input id="goToRegButton" type="button" value="Register" /> </p> </div>
+					</fieldset>
+				</form>
+				<div class="divider"> </div>
+				<h2>Top 10 scores</h2>
+				<div class="form-divide"> </div>
+				<center>
+					<div id="topscores">
+					</div>
+				</center>
+			</div>
+			<div id="profile" style="display:none;">
+				<form>
+					<fieldset>
+						<legend>Enter your info below</legend>
+						<div id="regerror" class="error"> </div>
+						<table class="form">
+							<tr> <td> <div id="reguser"> <label for="rusername"> Username: </label> </div> <div class="smalltext"> (6 to 32 characters) </div> </td> <td> <input type="text" id="rusername"> </td> </tr>
+							<tr> <td> <div id="regpass"> <label for="rpassword"> Password:&nbsp; </label> </div> <div class="smalltext"> (6 to 32 characters) </div> </td> <td> <input type="password" id="rpassword"> </td> </tr>
+							<tr> <td> <div id="regemail"> <label for="email"> E-Mail: </label> </div> </td> <td> <input type="text" id="email"> </td> </tr>
+							<tr> <td> <div id="regfirst"> <label for="firstname"> First Name: </label> </div> </td> <td> <input type="text" id="firstname"> </td> </tr>
+							<tr> <td> <div id="reglast"> <label for="lastname"> Last Name: </label> </div> </td> <td> <input type="text" id="lastname"> </td> </tr>
+						</table>
+						<div class="form-divide"> </div>
+						<div id="reg" style="display:none;"> <div class="button-align"> <p> <input id="registerButton" type="button" value="Register"> </p> </div> </div>
+						<div id="upd" style="display:none;"> <div class="button-align"> <p> <input id="updateButton" type="button" value="Update Info"> </p> </div> </div>
+					</fieldset>
+				</form>
+				<div id="deloption" style ="display:none;">
+					<div class="divider"> </div>
+					<form>
+						<fieldset>
+							<legend>Delete your account here</legend>
+							<p> <input id="deleteButton" type="button" value="Delete Your Account" /> </p>
+						</fieldset>
+					</form>
+				</div>
+				<div class="divider"> </div>
+				<p> <button type="button" id="back" onclick = "back();"> Back </button> </p>
+			</div>
+			<div id="game" style="display:none;">
+				<table>
+					<tr>
+						<td> <div id="stage"> </div> </td> 
+						<td>
+							<center>
+								<p> <input id="modifyAcct" type="button" value="Modify Account Info"> </p>
+								<p> <button type="button" id = "logout" onclick = "logout();"> Logout </button> </p>
+								<form>
+									<fieldset>
+										<legend>Stats</legend>
+										<h2 id = "player_health"> Player Health = 3 </h2>
+										<h2 id = "score"> Score = 1000000 </h2>
+									</fieldset>
+								</form>
+								<form>
+									<fieldset>
+										<legend>Legend</legend>
+										<table class="legend">
+											<tr>
+												<td> <img src="icons/blank.gif" id="blankImage" border="1"/> </td>
+												<td> <img src="icons/emblem-package-2-24.png" id="boxImage" border="1"/> </td>
+												<td> <img src="icons/face-cool-24-player.png" id="yourPlayerImage" border="1"/> </td>
+												<td> <img src="icons/face-cool-24.png" id="playerImage" border="1"/> </td>
+												<td> <img src="icons/face-devil-grin-24.png" id="monsterImage" border="1" /> </td>
+												<td> <img src="icons/wall.jpeg" id="wallImage" border="1" /> </td>
+											</tr>
+											<tr>
+												<td> Empty <br/> Square </td>
+												<td> Box </td>
+												<td> YOU </td>
+												<td> Remote <br/> Players </td>
+												<td> Monster </td>
+												<td> Wall </td>
+											</tr>
+										</table>
+									</fieldset>
+								</form>
+								<form>
+									<fieldset>
+										<legend>Controls</legend>
+										<table class="controls">
+											<tr>
+												<td><img src="icons/north_west.svg" onclick="move('north_west')" /></td>
+												<td><img src="icons/north.svg" onclick="move('north')" /></td>
+												<td><img src="icons/north_east.svg" onclick="move('north_east')" /></td>
+											</tr>
+											<tr>
+												<td><img src="icons/west.svg" onclick="move('west')" /></td>
+												<td>&nbsp;</td>
+												<td><img src="icons/east.svg" onclick="move('east')" /></td>
+											</tr>
+											<tr>
+												<td><img src="icons/south_west.svg" onclick="move('south_west')" /></td>
+												<td><img src="icons/south.svg" onclick="move('south')" /></td>
+												<td><img src="icons/south_east.svg" onclick="move('south_east')"/></td>
+											</tr>
+										</table>
+									</fieldset>
+								</form>
+								<form>
+									<fieldset>
+										<legend>Mobile Canvas (swipe to move!)</legend>
+										<canvas id = "canvas" width = "200" height = "200" style ="border:1px solid black;"> </canvas > 
+									</fieldset>
+								</form>
+							</center>
+						</td>
+					</tr>
+				</table>
+				<div class="divider"> </div>
+				<table>
+					<tr>
+						<td>
+							<input type="text" id="chatmsg">
+							<input id="chatButton" type="button" value="Send Message">
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<form>
+								<fieldset>
+									<legend>Game log</legend>
+									<div id="log"></div>
+								</fieldset>
+							</form>
+						</td>
+						<td>
+							<form>
+								<fieldset>
+									<legend>Your previous best scores!</legend>
+									<div id="personalscores"></div>
+								</fieldset>
+							</form>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</center>
+	</body>
+</html>
+
