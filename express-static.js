@@ -9,7 +9,8 @@ var userfilename = "userInfo.txt";
 var scorefilename = "scores.txt";
 var users = {};
 var mongo = require('mongodb');
-var MongoClient = mongo.MongoClient; 
+var MongoClient = mongo.MongoClient;
+
 //each user has a document
 var collectionUsers;
 var collectionScores;
