@@ -1,0 +1,28 @@
+{
+  "name": "warehouse-wars-multiplayer",
+  "version": "1.0.0",
+  "description": "An MMORPG Packman game flipped on its head",
+  "main": "express-static.js",
+  "scripts": {
+    "start": "node express-static.js | node game.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CPAM34/Warehouse-Wars-Multiplayer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CPAM34/Warehouse-Wars-Multiplayer/issues"
+  },
+  "homepage": "https://github.com/CPAM34/Warehouse-Wars-Multiplayer#readme",
+  "dependencies": {
+    "JSON": "^1.0.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.3.2",
+    "ws": "^7.1.2"
+  }
+}

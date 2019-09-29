@@ -37,6 +37,9 @@ app.listen(10690, function () {
   console.log('Example app listening on port 10690!');
 });
 
+
+/* REST API */
+
 app.get('/player', function(req, res) {
 	if ((typeof req.query.user != 'undefined') && (typeof req.query.pass != 'undefined')) {
 		user = req.query.user;
