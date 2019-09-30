@@ -16,3 +16,8 @@ Extras:
 - Shake to log out on mobile
 - User to user chat
 - MongoDB
+
+db.createCollection('users');
+db.createCollection('scores');
+
+mongodb 4.2.0

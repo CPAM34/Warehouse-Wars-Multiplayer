@@ -15,11 +15,12 @@ var MongoClient = mongo.MongoClient;
 var collectionUsers;
 var collectionScores;
 
-MongoClient.connect('mongodb://pervanch:80746@mcsdb.utm.utoronto.ca/pervanch_309', function(err, db) {
+MongoClient.connect('mongodb://127.0.0.1:27017/', function(err, client) {
     if (err) {
         console.error(err);
     }
 	else {
+		const db = client.db('warehouse_wars_multiplayer');
 		collectionUsers = db.collection('users');
 		collectionScores = db.collection('scores');
 	}

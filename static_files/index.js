@@ -247,7 +247,7 @@ function move (direction) {
 window.onload = highScores;
 // Set up page on initial load with only login form
 $(function(){
-	socket = new WebSocket("ws://cslinux.utm.utoronto.ca:10691");
+	socket = new WebSocket("ws://localhost:10691");
 	
 	canvas = document.getElementById('canvas');
 	

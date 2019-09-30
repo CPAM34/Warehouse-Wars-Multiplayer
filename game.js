@@ -1,5 +1,5 @@
-var WebSocketServer = require('ws').Server
-   ,wss = new WebSocketServer({port: 10691});
+const WebSocketServer = require('ws').Server;
+const wss = new WebSocketServer({port: 10691});
 
 var messages=[];
 var world = {};
@@ -74,7 +74,7 @@ wss.broadcast = function(message){
 						world['users'][user][0].send(JSON.stringify({"status" : "log", "sound" : "./sounds/playerdeath.wav" , "msg" : date + " - " + message[1] + " has been killed!"}));
 					}
 					else if (message[0] == "playerhit") {
-						world['users'][user][0].send(JSON.stringify({"status" : "log", "sound" : "./sounds/playerhit.wav", "msg" : date + " - " + message[1] + " has been hit! He has " + world['state'].getPlayer(message[1]).health + " health left."}));
+						world['users'][user][0].send(JSON.stringify({"status" : "log", "sound" : "./sounds/playerhit.wav", "msg" : date + " - " + message[1] + " has been hit! He has " + world['state'].getPlayer(message[1]).health + " health points left."}));
 					}
 					else if (message[0] == "playerjoined") {
 						world['users'][user][0].send(JSON.stringify({"status" : "log", "sound" : "./sounds/newplayer.wav", "msg" : date + " - " + message[1] + " has joined the game!"}));
